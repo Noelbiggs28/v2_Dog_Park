@@ -8,7 +8,8 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "dog_park_proj.settings")
 # Initialize Django
 django.setup()
 from park_app.models import DogPark
-
-DogPark.objects.create(dog_park_name="Mililani")
-DogPark.objects.create(dog_park_name="Waipahu")
-DogPark.objects.create(dog_park_name="Honolulu")
+DogPark.objects.all().delete()
+park_names = ["Mililani", "Waipahu", "Honolulu"]
+for park in park_names:
+    existing_park = DogPark.objects.filter(dog_park_name=park).first()
+    DogPark.objects.create(dog_park_name=park)
