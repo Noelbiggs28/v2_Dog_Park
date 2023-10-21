@@ -13,8 +13,8 @@ django.setup()
 from park_app.models import DogPark
 from trait_app.models import Trait
 # deletes all dogParks
-DogPark.objects.all().delete()
-
+# DogPark.objects.all().delete()
+Trait.objects.all().delete()
 # list of all dog park names on oahu
 # park_names = ["Mililani", "Waipahu", "Honolulu", "Wheeler", "Central O'ahu", "Pearl City Peninsula", "Ford Island", "Moanalua", "Forest City", "Hoalauna","Ala Wai", "Radford Terrace"]
 # # loops through names
