@@ -9,8 +9,8 @@ import Logout from './pages/Logout';
 import MyProfile from './pages/my_profile';
 import Parks from './pages/parks';
 function App() {
-  const url="http://localhost:8000/api/"
-  // const url= `${import.meta.env.VITE_BASE_URL}`
+  // const url="http://localhost:8000/api/"
+  const url= `${import.meta.env.VITE_BASE_URL}`
  
   const [formData, setFormData] = useState({ username: '', password: '' });
   const [userToken, setUserToken] = useState(null)
