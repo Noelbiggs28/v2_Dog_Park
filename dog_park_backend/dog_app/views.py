@@ -6,17 +6,18 @@ from rest_framework.views import APIView
 
 from django.shortcuts import get_object_or_404
 from .models import Dog
-from .serializers import DogSerializer
+from .serializers import DogSerializer, DogViewSerializer
 
 class DogView(APIView): 
 
     def get(self, request, pk=None):
         if pk is not None:
             dog = get_object_or_404(Dog, pk=pk)
-            serializer = DogSerializer(dog)
+            serializer = DogViewSerializer(dog)
         else:
             dogs = Dog.objects.filter(owner=request.user).order_by("pk")
-            serializer = DogSerializer(dogs, many=True)
+            serializer = DogViewSerializer(dogs, many=True)
+        print(serializer.data)
         return Response(serializer.data)
     
     def post(self, request):
@@ -45,11 +46,19 @@ class DogView(APIView):
                 dog.name = request.data.get('name',dog.name)
             if 'description' in request.data:
                 dog.description= request.data.get('description',dog.description)
+            if 'traits' in request.data:
+                trait_ids = request.data.get('traits', [])
+                dog.traits.set(trait_ids)
+            if 'dislikes' in request.data:
+                dislike_ids = request.data.get('dislikes',[])
+                dog.dislikes.set(dislike_ids)
+            if 'picture' in request.data:
+                dog.picture = request.data.get('picture',[])
             dog.save()
-            return Response(serializer.data, status.HTTP_201_CREATED)
+            return Response("dog updated", status.HTTP_201_CREATED)
         else:
             print(serializer.errors)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response("dog photo updated", status=status.HTTP_201_CREATED)
 
     def delete(self, request, pk):
         dog = get_object_or_404(Dog, pk=pk)

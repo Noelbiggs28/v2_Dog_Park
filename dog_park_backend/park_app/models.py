@@ -5,3 +5,4 @@ from dog_app.models import Dog
 class DogPark(models.Model):
     dog_park_name = models.CharField(max_length=55)
     dogs = models.ManyToManyField(Dog, blank=True)
+    mapkey = models.CharField(max_length=100, blank=True)

@@ -34,6 +34,7 @@ export default function MyProfile({ user, setUser, url}){
         const apiData = await fetch(endpoint, payload)
         const apiJSON= await apiData.json()
         setDogs(apiJSON)
+        console.log(apiJSON)
         return apiJSON
 
     }
@@ -98,7 +99,7 @@ export default function MyProfile({ user, setUser, url}){
               <Button onClick={handleRemoveDogs} variant='outlined'>Remove dogs from parks</Button>
               <h1>Profile page</h1>
               <h3>Hello {user ? user["name"]:"buddy"}</h3>
-                {dogs && dogs.map((dog,index)=><Grid onClick={()=>handleDogCardClick(dog["id"])} item xs={4} key={index}><Dog_Card name={dog["name"]} age={dog["age"]} description={dog["description"]} /></Grid>)}
+                {dogs && dogs.map((dog,index)=><Grid onClick={()=>handleDogCardClick(dog["id"])} item xs={4} key={index}><Dog_Card traits={dog["traits"]} picture={dog["picture"]} dislikes={dog["dislikes"]} name={dog["name"]} age={dog["age"]} description={dog["description"]} /></Grid>)}
             </>
           ) : 
           isUpdatingProfile ? (

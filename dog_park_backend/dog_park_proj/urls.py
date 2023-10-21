@@ -22,5 +22,7 @@ urlpatterns = [
     path('api/profile/',include("user_profile_app.urls")),
     path('api/accounts/', include("accounts_app.urls")),
     path('api/dog/', include("dog_app.urls")),
-    path('api/parks/', include("park_app.urls"))
+    path('api/parks/', include("park_app.urls")),
+    path('api/trait/', include("trait_app.urls")),
+    path('api/apis/', include("external_apis_app.urls"))
 ]

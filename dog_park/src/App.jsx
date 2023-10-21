@@ -9,8 +9,9 @@ import Logout from './pages/Logout';
 import MyProfile from './pages/my_profile';
 import Parks from './pages/parks';
 function App() {
-  // const url="http://localhost/api/"
-  const url= `${import.meta.env.VITE_BASE_URL}/api/`
+  const url="http://localhost:8000/api/"
+  // const url= `${import.meta.env.VITE_BASE_URL}`
+ 
   const [formData, setFormData] = useState({ username: '', password: '' });
   const [userToken, setUserToken] = useState(null)
   const [user, setUser] = useState(null)
@@ -58,11 +59,21 @@ const router = createBrowserRouter([
     ]
   }
 ])
+const router2 = createBrowserRouter([
+  {
+    path:"/",
+    element:<LoginOrSignup url={url} handleInputChange={handleInputChange} formData={formData} handleToken={handleToken}/>
+  },      
+  {
+    path:"/Logout",
+    element:<Logout setUserToken={setUserToken} userToken={userToken} />
+  },
+])
 
   return (
     <>
-      <UserContext.Provider value={userToken}>
-      <RouterProvider router={router} />
+    <UserContext.Provider value={userToken}>
+      <RouterProvider router={userToken? router: router2} />
     </UserContext.Provider>
     </>
   )

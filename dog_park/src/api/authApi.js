@@ -6,7 +6,7 @@ async function basicFetch(url, payload) {
 
 
 export async function signup(context, url) {
-  
+
   const payload = {
     method: "POST",
     headers: {

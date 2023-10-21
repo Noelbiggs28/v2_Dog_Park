@@ -20,3 +20,5 @@ docker buildx build --platform linux/amd64 --build-arg VITE_BASE_URL=$BASE_URL -
 
 docker buildx build --platform linux/amd64  -t $DOCKERHUB_UNAME/dog-park-backend:$NEW_VERSION -f dog_park_backend/Dockerfile ./dog_park_backend --no-cache --push
 # docker push $DOCKERHUB_UNAME/api-prod:$NEW_VERSION
+
+# ./build-and-push-images.sh http://54.198.184.220/api/ 1.1

@@ -20,11 +20,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-f_k7u5+rmx0e$pr+@5%x2n7#_)kuxvv*2n4wd!d2v-#bj@u0+m'
-SECRET_KEY = os.getenv("SECRET_KEY") 
+SECRET_KEY = 'django-insecure-f_k7u5+rmx0e$pr+@5%x2n7#_)kuxvv*2n4wd!d2v-#bj@u0+m'
+# SECRET_KEY = os.getenv("SECRET_KEY") 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =  True if os.getenv("DEBUG") == "True" else False
-
+# DEBUG =  True if os.getenv("DEBUG") == "True" else False
+DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 
@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'accounts_app',
     'rest_framework.authtoken',
     'dog_app',
-    'park_app'
+    'park_app',
+    'trait_app',
+    'external_apis_app'
 ]
 
 MIDDLEWARE = [
@@ -88,26 +90,29 @@ WSGI_APPLICATION = 'dog_park_proj.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#     "ENGINE": "django.db.backends.postgresql",
-#     "NAME": "db",
-#     "USER": "postgres",
-#     "PASSWORD": "postgres",
-#     "HOST": "localhost",
-#     "PORT": 5432,
-#     }
-# }
+
+
 DATABASES = {
     "default": {
     "ENGINE": "django.db.backends.postgresql",
-    "NAME": os.getenv('DB_NAME'),
-    "USER": os.getenv('DB_USER'),
-    "PASSWORD": os.getenv('DB_PASS'),
+    "NAME": "postgres",
+    "USER": "postgres",
+    "PASSWORD": "postgres",
     "HOST": "db",
     "PORT": 5432,
     }
 }
+
+# DATABASES = {
+#     "default": {
+#     "ENGINE": "django.db.backends.postgresql",
+#     "NAME": os.getenv('DB_NAME'),
+#     "USER": os.getenv('DB_USER'),
+#     "PASSWORD": os.getenv('DB_PASS'),
+#     "HOST": "db",
+#     "PORT": 5432,
+#     }
+# }
 
 
 # Password validation
@@ -150,3 +155,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+DEFAULT_FILE_STORAGE = "storages.backends.s3.S3Storage"
+AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY") 
+AWS_STORAGE_BUCKET_NAME = "dogparkbucket"
+AWS_QUERYSTRING_AUTH = False

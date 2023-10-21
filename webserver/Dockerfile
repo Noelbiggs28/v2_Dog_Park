@@ -11,7 +11,7 @@ WORKDIR /dog_park
 # These two lines will allow us to pass in an environment
 # variable when the image is *built* (not run).  For local
 # development, localhost; for production, your EC2's IP address
-ARG VITE_BASE_URL=localhost
+ARG VITE_BASE_URL="http://localhost/api/"
 ENV VITE_BASE_URL=$VITE_BASE_URL
 
 COPY ./dog_park/package.json .

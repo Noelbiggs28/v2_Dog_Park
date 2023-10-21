@@ -1,7 +1,7 @@
 import Form from "../components/Form"
 import { useState } from 'react';
 import { signup } from '../api/authApi';
-import {Navigate} from 'react-router-dom';
+
 
 
 

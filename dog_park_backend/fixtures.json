@@ -1,0 +1,54 @@
+[
+    {
+      "model": "park_app.dogpark",
+      "pk": 1,
+      "fields": {
+        "dog_park_name": "Mililani",
+        "mapkey":"Dog+Park,Mililani+HI"
+      }
+    },
+    {
+      "model": "park_app.dogpark",
+      "pk": 2,
+      "fields": {
+        "dog_park_name": "Central Oahu",
+        "mapkey":"Dog+Park,Waipahu+Hi"
+      }
+    },
+    {
+        "model": "park_app.dogpark",
+        "pk": 3,
+        "fields": {
+          "dog_park_name": "Pearl City Peninsula",
+          "mapkey":"Dog+Park,PearlCity+Hi"
+        }
+    },
+    {
+        "model": "trait_app.trait",
+        "pk": 1,
+        "fields": {
+          "name": "Small Dog"
+        }
+    },
+    {
+        "model": "trait_app.trait",
+        "pk": 2,
+        "fields": {
+          "name": "Large Dog"
+        }
+    },
+    {
+        "model": "trait_app.trait",
+        "pk": 3,
+        "fields": {
+          "name": "Agressive"
+        }
+    },
+    {
+        "model": "trait_app.trait",
+        "pk": 4,
+        "fields": {
+          "name": "Friendly"
+        }
+    }
+  ]
