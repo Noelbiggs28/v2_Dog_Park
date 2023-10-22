@@ -200,7 +200,7 @@ export default function Update_Dog({dog_pk,url, closeDogCard}){
                 <Button variant="outlined" onClick={handleBack}>Back</Button>
                 <Button variant='outlined' onClick={updatePhoto}>save photo</Button>
               </form>
-              {isUploadingPhoto ? (<><CircularIndeterminate />"uploading photo"</>): null}
+              {isUploadingPhoto ? (<><CircularIndeterminate />{"uploading photo"}</>): null}
               {isDisplayingTraits && <TraitCheckBoxes  dogTraits={dogTraits} setDogTraits={setDogTraits} toggleTraits={toggleTraits} isDisplayingTraits={isDisplayingTraits}  traits={traits} setTraits={setTraits}/>}
               {isDisplayingDislikes && <TraitCheckBoxes  dogTraits={dogDislikes} setDogTraits={setDogDislikes} toggleTraits={toggleDislike} isDisplayingTraits={isDisplayingDislikes}  traits={dislikes} setTraits={setDislikes}/>}
             </div>

@@ -54,12 +54,14 @@ class DogView(APIView):
                 dislike_ids = request.data.get('dislikes',[])
                 dog.dislikes.set(dislike_ids)
             if 'picture' in request.data:
-                dog.picture = request.data.get('picture',[])
+            #     dog.picture = request.data.get('picture',[])
+                dog.picture = request.data['picture']
+
             dog.save()
-            return Response("dog updated", status.HTTP_201_CREATED)
+            return Response("dog updated", status.HTTP_200_OK)
         else:
             print(serializer.errors)
-        return Response("dog photo updated", status=status.HTTP_201_CREATED)
+        return Response("dog photo updated", status=status.HTTP_200_OK)
 
     def delete(self, request, pk):
         dog = get_object_or_404(Dog, pk=pk)
