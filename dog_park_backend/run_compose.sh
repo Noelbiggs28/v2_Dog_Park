@@ -1,7 +1,7 @@
 export AWS_ACCESS_KEY_ID=$1
-# AKIAUC53J7LATEF6I2HE
+
 export AWS_SECRET_ACCESS_KEY=$2
-# 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
+
 
 docker-compose up -d --build
 

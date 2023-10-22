@@ -19,12 +19,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-f_k7u5+rmx0e$pr+@5%x2n7#_)kuxvv*2n4wd!d2v-#bj@u0+m'
-SECRET_KEY = os.getenv("SECRET_KEY") 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =  True if os.getenv("DEBUG") == "True" else False
-# DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 
@@ -86,6 +80,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'dog_park_proj.wsgi.application'
 
+# SECURITY WARNING: keep the secret key used in production secret!
+# SECRET_KEY = 'django-insecure-f_k7u5+rmx0e$pr+@5%x2n7#_)kuxvv*2n4wd!d2v-#bj@u0+m'
+SECRET_KEY = os.getenv("SECRET_KEY") 
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG =  True if os.getenv("DEBUG") == "True" else False
+# DEBUG = True
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -158,7 +158,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 DEFAULT_FILE_STORAGE = "storages.backends.s3.S3Storage"
-AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
-AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY") 
+AWS_ACCESS_KEY_ID = "AKIAUC53J7LATEF6I2HE"
+AWS_SECRET_ACCESS_KEY = "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"
 AWS_STORAGE_BUCKET_NAME = "dogparkbucket"
 AWS_QUERYSTRING_AUTH = False

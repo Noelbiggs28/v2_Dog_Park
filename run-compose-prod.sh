@@ -21,6 +21,5 @@ docker-compose -f docker-compose.prod.yml up -d
 sleep 10 
 docker exec v2_dog_park-api-1 python /src/manage.py makemigrations 
 docker exec v2_dog_park-api-1 python /src/manage.py migrate
-docker exec -it v2_dog_park-api-1 python setup_data.py
 docker exec -it v2_dog_park-api-1 python manage.py loaddata fixtures.json
 # ./run-compose-prod.sh abc False db postgres postgres 1.1

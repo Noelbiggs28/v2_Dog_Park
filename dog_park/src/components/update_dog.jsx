@@ -44,22 +44,7 @@ export default function Update_Dog({dog_pk,url, closeDogCard}){
         // updatedData.append('dislikes', dogDislikesIds)
         updatedData['traits'] = dogTraitIds
         updatedData['dislikes'] = dogDislikesIds
-        if(dogPhoto!=undefined){
-          setIsUploadingPhoto(true)
-          let dogForm = new FormData()
-          dogForm.append("picture",dogPhoto, dogPhoto.name)
-          const DogPayload = {
-            method: "PATCH",
-            headers: {
-              "Authorization": `Token ${userToken}`
-            },
-            body: dogForm
-            }
-            const apiData = await fetch(endpoint, DogPayload)
-            setIsUploadingPhoto(false)
-            // const apiJSON= await apiData.json()
-            // return apiJSON
-        }
+
 
         // shared payload for patch or delete
         const payload = {
@@ -76,6 +61,25 @@ export default function Update_Dog({dog_pk,url, closeDogCard}){
         return apiJSON
     }
     // gets dog traits
+    const updatePhoto = async () =>{
+     
+        setIsUploadingPhoto(true)
+        let dogForm = new FormData()
+        dogForm.append("picture",dogPhoto, dogPhoto.name)
+        const DogPayload = {
+          method: "PATCH",
+          headers: {
+            "Authorization": `Token ${userToken}`
+          },
+          body: dogForm
+          }
+          const apiData = await fetch(endpoint, DogPayload)
+          const apiJSON= await apiData.json()
+          setIsUploadingPhoto(false)
+          closeDogCard()
+          return apiJSON
+      }
+    
     const getDogTraits = async () =>{
       const DogPayload = {
         method: "GET",
@@ -194,6 +198,7 @@ export default function Update_Dog({dog_pk,url, closeDogCard}){
                 <Button variant="outlined" onClick={()=>handleSubmit("PATCH")}>Update</Button>
                 <Button variant="outlined" onClick={()=>handleSubmit("DELETE")}>delete</Button>
                 <Button variant="outlined" onClick={handleBack}>Back</Button>
+                <Button variant='outlined' onClick={updatePhoto}>save photo</Button>
               </form>
               {isUploadingPhoto ? (<><CircularIndeterminate />"uploading photo"</>): null}
               {isDisplayingTraits && <TraitCheckBoxes  dogTraits={dogTraits} setDogTraits={setDogTraits} toggleTraits={toggleTraits} isDisplayingTraits={isDisplayingTraits}  traits={traits} setTraits={setTraits}/>}

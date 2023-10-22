@@ -28,9 +28,10 @@ class DogView(APIView):
             serializer.validated_data['owner'] = request.user
             # save dog to db
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             print(serializer.errors)
+            
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     def patch(self, request, pk):
